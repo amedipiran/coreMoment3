@@ -1,7 +1,15 @@
+using Moment3_2.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Db connetions
+builder.Services.AddDbContext<BookContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultDbString"))
+);
 
 var app = builder.Build();
 
