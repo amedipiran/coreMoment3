@@ -27,50 +27,48 @@ namespace Moment3_2.Controllers
         }
 
         // GET: BookLoan/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+     public IActionResult Create()
+{
+    var books = _context.Book.ToList();
+    var borrowers = _context.Borrower.ToList();
 
-            var bookLoan = await _context.BookLoan
-                .Include(b => b.Book)
-                .Include(b => b.Borrower)
-                .FirstOrDefaultAsync(m => m.BookLoanId == id);
-            if (bookLoan == null)
-            {
-                return NotFound();
-            }
+    if (books == null || borrowers == null)
+    {
+        // Hantera fallet där en eller båda listorna är null
+        // Du kan antingen sätta en felmeddelande eller redirect till en annan vy
+        // Till exempel:
+         TempData["Error"] = "Data missing for books or borrowers.";
+         return RedirectToAction("ErrorView");
+    }
 
-            return View(bookLoan);
-        }
+    ViewData["Books"] = new SelectList(books, "Id", "Title");
+    ViewData["Borrowers"] = new SelectList(borrowers, "BorrowerId", "Name");
+    return View();
+}
 
-        // GET: BookLoan/Create
-        public IActionResult Create()
-        {
-            ViewData["BookId"] = new SelectList(_context.Book, "Id", "Id");
-            ViewData["BorrowerId"] = new SelectList(_context.Borrower, "BorrowerId", "BorrowerId");
-            return View();
-        }
 
         // POST: BookLoan/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookLoanId,BookId,BorrowerId,LoanDate,ReturnDate")] BookLoan bookLoan)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(bookLoan);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["BookId"] = new SelectList(_context.Book, "Id", "Id", bookLoan.BookId);
-            ViewData["BorrowerId"] = new SelectList(_context.Borrower, "BorrowerId", "BorrowerId", bookLoan.BorrowerId);
-            return View(bookLoan);
-        }
+// POST: BookLoan/Create
+[HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Create([Bind("BookLoanId,BookId,BorrowerId,LoanDate,ReturnDate")] BookLoan bookLoan)
+{
+    if (ModelState.IsValid)
+    {
+        _context.Add(bookLoan);
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+    }
+
+    // Uppdatera SelectList för att behålla valda värden vid valideringsfel
+ViewData["Books"] = new SelectList(_context.Book, "Id", "Title");
+ViewData["Borrowers"] = new SelectList(_context.Borrower, "BorrowerId", "Name");
+
+    return View(bookLoan);
+}
+
 
         // GET: BookLoan/Edit/5
         public async Task<IActionResult> Edit(int? id)

@@ -12,29 +12,29 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Book)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Borrower)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LoanDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReturnDate)
-            </th>
-            <th></th>
+            <th>Book ID</th>
+            <th>Book Name</th>
+            <th>Borrower ID</th>
+            <th>Borrower Name</th>
+            <th>Loan Date</th>
+            <th>Return Date</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Book.Id)
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@item.BookId">@item.BookId</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Borrower.BorrowerId)
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@item.BookId">@item.Book.Title</a>
+            </td>
+            <td>
+                <a asp-controller="Borrower" asp-action="Details" asp-route-id="@item.BorrowerId">@item.BorrowerId</a>
+            </td>
+            <td>
+                <a asp-controller="Borrower" asp-action="Details" asp-route-id="@item.BorrowerId">@item.Borrower.Name</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LoanDate)

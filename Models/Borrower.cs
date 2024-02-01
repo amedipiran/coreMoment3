@@ -8,6 +8,5 @@ namespace Moment3_2.Models {
         public string Email { get; set; }
 
 
-
     }
 }
