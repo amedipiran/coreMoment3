@@ -25,6 +25,26 @@ namespace Moment3_2.Controllers
             var bookContext = _context.BookLoan.Include(b => b.Book).Include(b => b.Borrower);
             return View(await bookContext.ToListAsync());
         }
+        public async Task<IActionResult> Details(int? id)
+{
+    if (id == null)
+    {
+        return NotFound();
+    }
+
+    var bookLoan = await _context.BookLoan
+        .Include(b => b.Book)
+        .Include(b => b.Borrower)
+        .FirstOrDefaultAsync(m => m.BookLoanId == id);
+
+    if (bookLoan == null)
+    {
+        return NotFound();
+    }
+
+    return View(bookLoan);
+}
+
 
         // GET: BookLoan/Details/5
 public IActionResult Create()

@@ -1,22 +1,33 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Moment3_2.Models;
+using Microsoft.EntityFrameworkCore; 
+using Moment3_2.Data;
+using Moment3_2.Models; 
+using Moment3_2.ViewModels; 
+using System.Threading.Tasks;
+using System.Diagnostics;
 
-namespace Moment3_2.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly BookContext _context; 
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(BookContext context) 
     {
-        _logger = logger;
+        _context = context; 
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var viewModel = new HomeViewModel
+        {
+            Books = await _context.Book.ToListAsync(),
+            Borrowers = await _context.Borrower.ToListAsync(),
+            BookLoans = await _context.BookLoan.Include(b => b.Book).Include(b => b.Borrower).ToListAsync()
+        };
+
+        return View(viewModel);
     }
+
 
     public IActionResult Privacy()
     {

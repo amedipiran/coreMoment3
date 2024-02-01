@@ -2,7 +2,138 @@
     ViewData["Title"] = "Home Page";
 }
 
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@model Moment3_2.ViewModels.HomeViewModel
+
+<h2>Books</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Title
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var book in Model.Books) {
+        <tr>
+            <td>
+                @book.Title
+            </td>
+            <td>
+                @book.Author
+            </td>
+            <td>
+                @book.Quantity
+            </td>
+            <td>
+                 <a asp-controller="Book" asp-action="Edit" asp-route-id="@book.Id">Edit</a>
+               |
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">Details</a> |
+                     <a asp-controller="Book" asp-action="Delete" asp-route-id="@book.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var borrower in Model.Borrowers) {
+        <tr>
+            <td>
+                @borrower.Name
+            </td>
+            <td>
+                @borrower.Email
+            </td>
+            <td>
+             <a asp-controller="Borrower" asp-action="Edit" asp-route-id="@borrower.BorrowerId">Edit</a>
+               |
+                    <a asp-controller="Borrower" asp-action="Details" asp-route-id="@borrower.BorrowerId">Details</a> |
+                     <a asp-controller="borrower" asp-action="Delete" asp-route-id="@borrower.BorrowerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+
+<h2>Boklån</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Book ID</th>
+            <th>Book Name</th>
+            <th>Borrower ID</th>
+            <th>Borrower Name</th>
+            <th>Loan Date</th>
+            <th>Return Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var bookloan in Model.BookLoans) {
+        <tr>
+            <td>
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@bookloan.BookId">@bookloan.BookId</a>
+            </td>
+            <td>
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@bookloan.BookId">@bookloan.Book.Title</a>
+            </td>
+            <td>
+                <a asp-controller="Borrower" asp-action="Details" asp-route-id="@bookloan.BorrowerId">@bookloan.BorrowerId</a>
+            </td>
+            <td>
+                <a asp-controller="Borrower" asp-action="Details" asp-route-id="@bookloan.BorrowerId">@bookloan.Borrower.Name</a>
+            </td>
+            <td>
+                @bookloan.LoanDate
+            </td>
+            <td>
+                @bookloan.ReturnDate
+            </td>
+            <td>
+                <a asp-controller="Bookloan" asp-action="Edit" asp-route-id="@bookloan.BookLoanId">Edit</a> |
+                <a asp-controller="Bookloan" asp-action="Details" asp-route-id="@bookloan.BookLoanId">Details</a> |
+                <a asp-controller="Bookloan" asp-action="Delete" asp-route-id="@bookloan.BookLoanId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
