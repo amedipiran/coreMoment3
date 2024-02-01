@@ -8,7 +8,6 @@ namespace Moment3_2.Models {
         public string Email { get; set; }
 
 
-        // Navigationsegenskap för att hålla reda på lånade böcker
-        public List<BookLoan> BookLoans { get; set; }
+
     }
 }
