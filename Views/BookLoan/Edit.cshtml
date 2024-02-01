@@ -12,6 +12,13 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
             <input type="hidden" asp-for="BookLoanId" />
             <div class="form-group">
                 <label asp-for="BookId" class="control-label"></label>
