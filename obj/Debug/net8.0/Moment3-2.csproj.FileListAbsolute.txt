@@ -258,8 +258,6 @@
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/Moment3-2.AssemblyInfo.cs
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/Moment3-2.csproj.CoreCompileInputs.cache
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/Moment3-2.MvcApplicationPartsAssemblyInfo.cache
-/Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/Moment3-2.RazorAssemblyInfo.cache
-/Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/Moment3-2.RazorAssemblyInfo.cs
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/Moment3-2.sourcelink.json
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/staticwebassets.build.json
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/staticwebassets.development.json
@@ -268,12 +266,14 @@
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Moment3-2.props
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Moment3-2.props
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/staticwebassets.pack.json
-/Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/scopedcss/bundle/Moment3-2.styles.css
-/Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/scopedcss/projectbundle/Moment3-2.bundle.scp.css
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/Moment3-2.csproj.CopyComplete
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/Moment3-2.dll
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/refint/Moment3-2.dll
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/Moment3-2.pdb
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/Moment3-2.genruntimeconfig.cache
 /Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/ref/Moment3-2.dll
+/Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/Moment3-2.RazorAssemblyInfo.cache
+/Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/Moment3-2.RazorAssemblyInfo.cs
+/Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
+/Users/robertopiranamedi/Desktop/Moment3-2/obj/Debug/net8.0/scopedcss/projectbundle/Moment3-2.bundle.scp.css

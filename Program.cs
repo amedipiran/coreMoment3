@@ -11,6 +11,7 @@ builder.Services.AddDbContext<BookContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultDbString"))
 );
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
