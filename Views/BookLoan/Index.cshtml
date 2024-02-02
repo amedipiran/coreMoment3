@@ -1,0 +1,53 @@
+@model IEnumerable<Moment3_2.Models.BookLoan>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Book ID</th>
+            <th>Book Name</th>
+            <th>Borrower ID</th>
+            <th>Borrower Name</th>
+            <th>Loan Date</th>
+            <th>Return Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@item.BookId">@item.BookId</a>
+            </td>
+            <td>
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@item.BookId">@item.Book.Title</a>
+            </td>
+            <td>
+                <a asp-controller="Borrower" asp-action="Details" asp-route-id="@item.BorrowerId">@item.BorrowerId</a>
+            </td>
+            <td>
+                <a asp-controller="Borrower" asp-action="Details" asp-route-id="@item.BorrowerId">@item.Borrower.Name</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoanDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookLoanId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BookLoanId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BookLoanId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

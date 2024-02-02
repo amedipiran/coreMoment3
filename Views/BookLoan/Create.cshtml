@@ -1,0 +1,50 @@
+@model Moment3_2.Models.BookLoan
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>BookLoan</h4>
+<div asp-validation-summary="All" class="text-danger"></div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Book">Book</label>
+                <select asp-for="BookId" class="form-control" asp-items="ViewBag.Books"></select>
+                <a asp-controller="Book" asp-action="Create">Add new book</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="Borrower">Borrower</label>
+                <select asp-for="BorrowerId" class="form-control" asp-items="ViewBag.Borrowers"></select>
+                <a asp-controller="Borrower" asp-action="Create">Add new Borrower</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoanDate" class="control-label"></label>
+                <input asp-for="LoanDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")" />
+                <span asp-validation-for="LoanDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+ <label asp-for="ReturnDate" class="control-label"></label>
+<input asp-for="ReturnDate" class="form-control" value="@DateTime.Now.AddDays(14).ToString("yyyy-MM-dd HH:mm:ss")" />
+<span asp-validation-for="ReturnDate" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
