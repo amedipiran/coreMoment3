@@ -20,10 +20,19 @@ namespace Moment3_2.Controllers
         }
 
         // GET: Book
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Book.ToListAsync());
-        }
+public async Task<IActionResult> Index(string searchString)
+{
+    var books = from m in _context.Book
+                select m;
+
+    if (!String.IsNullOrEmpty(searchString))
+    {
+        books = books.Where(s => s.Title.Contains(searchString) || s.Author.Contains(searchString));
+    }
+
+    return View(await books.ToListAsync());
+}
+
 
         // GET: Book/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -148,6 +157,8 @@ namespace Moment3_2.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+
 
         private bool BookExists(int id)
         {

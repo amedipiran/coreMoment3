@@ -6,6 +6,11 @@
 
 <h1>Index</h1>
 
+<form method="get" action="@Url.Action("Index")">
+    <input type="text" name="searchString" />
+    <input type="submit" value="Search" />
+</form>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
